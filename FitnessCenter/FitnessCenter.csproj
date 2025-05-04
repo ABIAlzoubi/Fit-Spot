@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\admin\vendors\bootstrap\.github\CONTRIBUTING.md" />
+    <None Include="wwwroot\admin\vendors\bootstrap\.github\ISSUE_TEMPLATE\bug.md" />
+    <None Include="wwwroot\admin\vendors\bootstrap\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <None Include="wwwroot\admin\vendors\bootstrap\.github\ISSUE_TEMPLATE\feature.md" />
+    <None Include="wwwroot\admin\vendors\bootstrap\.github\ISSUE_TEMPLATE\feature_request.md" />
+    <None Include="wwwroot\admin\vendors\bootstrap\.github\SUPPORT.md" />
+    <None Include="wwwroot\admin\vendors\jquery-validation-unobtrusive\.vsts-pipelines\builds\ci-public.yml" />
+    <None Include="wwwroot\Signin\css\.DS_Store" />
+    <None Include="wwwroot\Signin\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\Signin\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\Signin\fonts\.DS_Store" />
+    <None Include="wwwroot\Signin\images\.DS_Store" />
+    <None Include="wwwroot\Signin\js\.DS_Store" />
+    <None Include="wwwroot\Signin\scss\.DS_Store" />
+    <None Include="wwwroot\Signin\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.35" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.18" />
+    <PackageReference Include="ODP.NetCore" Version="2.0.12" />
+    <PackageReference Include="Oracle.EntityFrameworkCore" Version="7.21.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+</Project>

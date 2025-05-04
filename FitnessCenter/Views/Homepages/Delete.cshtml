@@ -1,0 +1,64 @@
+﻿@model FitnessCenter.Models.Homepage
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Homepage</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mainpic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mainpic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mainstatement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mainstatement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Joinuspic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Joinuspic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Joinusparagraph)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Joinusparagraph)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Discountpic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Discountpic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Discountheader)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Discountheader)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Feedbackpic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Feedbackpic)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

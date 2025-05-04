@@ -1,0 +1,50 @@
+﻿@model FitnessCenter.Models.Workout
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_TrainerLayout.cshtml";
+}
+<div class="m-5">
+    <h1 class="mb-3">
+        Create Workout
+    </h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form enctype="multipart/form-data" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="WorkoutName" class="form-control" placeholder="Workout Name" />
+                    <span asp-validation-for="WorkoutName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="WorkoutDuration" class="form-control" placeholder="Workout Duration"/>
+                    <span asp-validation-for="WorkoutDuration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Shift" class="form-control" placeholder="Shift"/>
+                    <span asp-validation-for="Shift" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Price" class="form-control" placeholder="Price"/>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="ImageFile"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                    <input asp-for="ImageFile" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn-outline-primary">Back</a>
+    </div>
+
+</div>

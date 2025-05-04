@@ -1,0 +1,70 @@
+﻿
+@model IEnumerable<Staff>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="m-5">
+    <h1 class="mb-2">Manage Trainers</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+                <th style="display:flex; justify-content:center">
+                    @Html.DisplayNameFor(model => model.JoinDate)
+                </th>
+               
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img style="object-fit: cover; height:100px; width:100px; border-radius:50%; max-width:inherit" src="~/Images/@item.Image" )>
+                    </td>
+                    <td>
+                        @item.FirstName
+                    </td>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+
+                    <td style="width:300px;display:flex; justify-content:center">
+                        @item.JoinDate!.Value.ToShortDateString()
+                    </td>
+                    
+
+                    
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.StaffId" class="btn btn-warning btn-sm  mb-1" style="width:60px">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.StaffId" class="btn btn-success btn-sm mb-1" style="width:60px">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.StaffId" class="btn btn-danger btn-sm " style="width:60px">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-controller="Staffs" asp-action="Create" class="btn btn-primary btn-lg btn-block col-12 m-3 align-content-center">Create New</a>
+</div>
+

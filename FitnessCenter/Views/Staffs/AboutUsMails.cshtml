@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Contact>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="m-5">
+    <h1 class="mb-3">Users Mails</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Text
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    User Email
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                       @item.Notetext
+                    </td>
+                    <td>
+                        @item.Notedate!.Value.ToShortTimeString()
+                    </td>
+
+                    <td>
+                        @item.Useremail
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

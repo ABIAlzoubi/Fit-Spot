@@ -1,0 +1,126 @@
+﻿@{
+    Layout = "~/Views/Shared/_PrimaryLayout.cshtml";
+}
+ @model Tuple<FitnessCenter.Models.Member, FitnessCenter.Models.Workout, IEnumerable<Testimonial>>
+
+@{
+    Testimonial text = null;
+
+    if (TempData["Testimonial"] != null)
+    {
+        <div id="customAlert2" style="position: fixed; top: 70px; right: 50%; background-color: #28a745; color: white; padding: 15px; border-radius: 5px; z-index: 1000;">
+            @TempData["Testimonial"]
+        </div>
+        <script>
+            setTimeout(function () {
+            var alertElement = document.getElementById('customAlert2');
+            if (alertElement) {
+            alertElement.style.display = 'none'; // Hide the alert after 3 seconds
+            }
+            }, 3000);
+        </script>
+    }
+}
+
+@{
+    var image = ViewBag.backGroundImage;
+}
+
+<section class="slider" style="background:url('@Url.Content("~/Images/"+image)')  no-repeat 0% 30%;">
+
+    <div class="row p-5">
+        <h1 class="text-uppercase text-white col-5 m-0" style="display:inline">Welcome back <span class="text-color">@Model.Item1.FirstName </span> </h1>
+
+        <div class="d-flex flex-column align-items-end  text-center col-7 " style="display:inline"><img class="rounded-circle " src="~/Images/@Model.Item1.Image" width="300px" height="300px" style="object-fit:cover"></div>
+
+        <a asp-controller="Home" asp-action="MemberProfile" class="btn btn-main" style="z-index: 1;">Edit Profile <i class="ti-angle-right ml-3"></i></a>
+    </div>
+
+
+</section>
+
+
+<section class="section course">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="section-title">
+                    <div class="divider mb-3"></div>
+                    <h2>Your Course</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card rounded-0 p-0 mb-5">
+                    <img style="object-fit: cover; height:350px" src="~/Images/@Model.Item2.Image" alt="" class="img-fluid">
+
+                    <div class="card-body">
+                        <a asp-controller="Home" asp-action="SingleCourse" asp-route-CourseId=@Model.Item2.WorkoutId><h2 class="mt-3 mb-0">@Model.Item2.WorkoutName</h2></a>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <i class="ti-time mr-2 text-color"></i>Shift:
+                            </li>
+                            <li class="list-inline-item text-black">
+                                <strong>@Model.Item2.Shift</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="section course">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="section-title">
+                    <div class="divider mb-3"></div>
+                    <h2>Your Feedback</h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="flex-direction:column; align-items: center; justify-content: center;">
+
+            @if (Model.Item3 != null)
+            {
+
+                @foreach (var item in Model.Item3)
+                {
+                    if (item.Approved == true) { 
+                    <div class="text-center mb-4 col-12" style="align-items: center;display: flex;flex-direction: column; justify-content:center">
+                        <p class="my-4 col-4 text-black">@item.TestimonialsText</p>
+
+                        <div>
+                            <span class="text-black-50">@item.TestimonialsDate!.Value.Date</span>
+                        </div>
+                        <hr>
+                    </div>
+                    }
+                }
+
+
+            }
+
+        </div>
+        <div class="row">
+
+                <div class="col-12 " style="display: flex; align-items: center;justify-content: center;">
+                    <a asp-controller="Testimonials" asp-action="Create" class="btn btn-main ">Write Feedback</a>
+                </div>
+
+
+        </div>
+    </div>
+</section>
+

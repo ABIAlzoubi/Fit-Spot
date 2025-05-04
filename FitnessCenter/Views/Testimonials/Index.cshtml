@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FitnessCenter.Models.Testimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="m-5">
+    <h1 class="mb-3">Manage Feedbacks</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestimonialsText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestimonialsDate)
+                </th>
+                <th >
+                    @Html.DisplayNameFor(model => model.Approved)
+                </th>
+                
+                <th style="display:flex; justify-content:center">
+                    Manage
+                </th>
+                
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestimonialsText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestimonialsDate)
+                    </td>
+
+                    <td >
+                        @if (@item.Approved!.Value)
+                        {
+                            <p class="btn btn-outline-success btn-sm" style="width:50px; height:30px">@item.Approved </p>
+                        }
+                        else
+                        {
+                            <p class="btn btn-outline-danger btn-sm" style="width:50px; height:30px">@item.Approved</p>
+                        }
+                    </td>
+
+                    <td>
+                        <div style="display:flex; justify-content:center">
+                            <a asp-action="Details" asp-route-id="@item.TestemonialId" class="btn btn-success btn-sm m-1" style="width:60px">Details</a>
+                            <a asp-action="Edit" asp-route-id="@item.TestemonialId" class="btn btn-warning btn-sm  m-1" style="width:60px">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.TestemonialId" class="btn btn-danger btn-sm m-1" style="width:60px">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

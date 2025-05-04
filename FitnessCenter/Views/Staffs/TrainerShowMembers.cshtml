@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Member>
+
+@{
+    Layout = "~/Views/Shared/_TrainerLayout.cshtml";
+}
+
+
+
+<style>
+
+    
+    .table .thead-dark th {
+        color: #fe9418;
+    }
+</style>
+
+<div class="m-5">
+    <h1 class="mb-3">Gym Members</h1>
+    <table class="table">
+        <thead class="thead-dark" style="background-color:#fe9418 !important">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.JoinDate)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.WorkoutPlane)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img style="object-fit: cover; height:50px; width:50px; border-radius:50%; max-width:inherit" src="~/Images/@item.Image">
+                    </td>
+                    <td>
+                        @item.FirstName
+                    </td>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+
+                    <td style="width:300px">
+                        @item.JoinDate!.Value.ToShortDateString()
+                    </td>
+
+
+                    <td style="display:flex; justify-content:center">
+                        @item.WorkoutPlaneId
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

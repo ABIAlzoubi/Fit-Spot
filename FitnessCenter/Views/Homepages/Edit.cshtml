@@ -1,0 +1,71 @@
+﻿@model FitnessCenter.Models.Homepage
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="m-5">
+    <h1 class="mb-3">Edit Home Page</h1>
+
+    <h4></h4>
+    <hr />
+    <div class="row ">
+        <div class=" col-12">
+            <form enctype="multipart/form-data" asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+
+                <div class="form-group">
+                    <input asp-for="Mainstatement" class="form-control" maxlength="350" placeholder="Header Statement " />
+                    <span asp-validation-for="Mainstatement" class="text-danger"></span>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <textarea asp-for="Joinusparagraph" class="form-control" maxlength="350" style="height:250px" placeholder="Join Us paragraph" ></textarea>
+                    <span asp-validation-for="Joinusparagraph" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <input asp-for="Discountheader" class="form-control" maxlength="350" placeholder="Discount Header" />
+                    <span asp-validation-for="Discountheader" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <h6>Main Picture</h6>
+                    <label asp-for="ImageFileMainPic"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                    <input asp-for="ImageFileMainPic" class="btn btn-outline-primary btn-sm" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <h6>Join Us Section Picture</h6>
+                    <label asp-for="ImageFileJoinUs"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                    <input asp-for="ImageFileJoinUs" class="btn btn-outline-primary btn-sm" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <h6>Discount Section Pic</h6>
+                    <label asp-for="ImageFileDiscount"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                    <input asp-for="ImageFileDiscount" class="btn btn-outline-primary btn-sm" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <h6>Feedback Section Picture</h6>
+                    <label asp-for="ImageFileFeedback"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                    <input asp-for="ImageFileFeedback" class="btn btn-outline-primary btn-sm" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

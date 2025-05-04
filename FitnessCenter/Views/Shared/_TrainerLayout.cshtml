@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="~/admin/apple-icon.png">
+    <link rel="shortcut icon" href="~/admin/favicon.ico">
+
+    <link rel="stylesheet" href="~/admin/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/admin/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/admin/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/admin/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/admin/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="~/admin/vendors/jqvmap/dist/jqvmap.min.css">
+
+
+    <link rel="stylesheet" href="~/admin/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+<style>
+
+    .navbar .navbar-nav li > a {
+        background: none !important;
+        color: black !important;
+        display: inline-block;
+        font-family: 'Open Sans';
+        font-size: 14px;
+        line-height: 30px;
+        padding: 10px 0;
+        position: relative;
+        width: 100%;
+    }
+
+
+    i {
+        color: black !important;
+    }
+
+</style>
+
+
+<body>
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel" style="background-color:#fe9418;">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse" style="background-color:#fe9418;">
+                <ul class="nav navbar-nav">
+
+                    <div class="navbar-header">
+                        <h3 class="menu-title" style="color:black!important">Welcome @ViewContext.HttpContext.Session.GetString("TrainerFirstName")</h3>
+                    </div>
+
+                    <li class="active">
+                        <a asp-controller="Staffs" asp-action="TrainerIndex" style="color:black!important"> <i class="menu-icon fa fa-dashboard" style="color:black!important"></i>Dashboard </a>
+                    </li>
+                    <h3 class="menu-title" style="color:black!important">Manage Data</h3><!-- /.menu-title -->
+                    
+
+                    <li>
+                        <a asp-controller="Staffs" asp-action="TrainerShowMembers"> <i class="menu-icon fa fa-group"></i>Gym Members </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Workouts" asp-action="Index"> <i class="menu-icon fa fa-align-left"></i>Manage Workouts</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Workouts" asp-action="Create"> <i class="menu-icon fa fa-plus-square"></i>Create Workouts</a>
+                    </li>
+
+
+
+                    <h3 class="menu-title " style="color:black!important">Profile</h3><!-- /.menu-title -->
+                    <li>
+                        <a asp-controller="Staffs" asp-action="UpdateTrainer"> <i class="menu-icon fa fa-user"></i>Update Profile </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Signin_Regester" asp-action="Signout"> <i class="menu-icon fa fa-sign-in"></i>SignOut</a>
+                    </li>
+
+                    
+
+
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+    <!-- Left Panel -->
+
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+    </div>
+
+
+
+
+    <script src="~/admin/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/admin/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/admin/assets/js/main.js"></script>
+
+
+    <script src="~/admin/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="~/admin/assets/js/dashboard.js"></script>
+    <script src="~/admin/assets/js/widgets.js"></script>
+    <script src="~/admin/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="~/admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="~/admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+
+</body>
+</html>

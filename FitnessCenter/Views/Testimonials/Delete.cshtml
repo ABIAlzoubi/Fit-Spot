@@ -1,0 +1,36 @@
+﻿@model FitnessCenter.Models.Testimonial
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="m-5">
+
+<h3>Sure you want to delete this Feedback?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestimonialsText)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TestimonialsText)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TestimonialsDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.TestimonialsDate!.Value.ToShortDateString()
+        </dd>
+        
+        
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TestemonialId" />
+            <a asp-action="Index" class="btn btn-primary">Back</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+         
+    </form>
+</div>
+</div>

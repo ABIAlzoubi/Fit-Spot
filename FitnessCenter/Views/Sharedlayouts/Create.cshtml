@@ -1,0 +1,60 @@
+﻿@model FitnessCenter.Models.Sharedlayout
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Sharedlayout</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data"  asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="ImageFile"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input asp-for="ImageFile" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Facebooklink" class="control-label"></label>
+                <input asp-for="Facebooklink" class="form-control" />
+                <span asp-validation-for="Facebooklink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Twitterlink" class="control-label"></label>
+                <input asp-for="Twitterlink" class="form-control" />
+                <span asp-validation-for="Twitterlink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Githublink" class="control-label"></label>
+                <input asp-for="Githublink" class="form-control" />
+                <span asp-validation-for="Githublink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photerparagraph" class="control-label"></label>
+                <input asp-for="Photerparagraph" class="form-control" />
+                <span asp-validation-for="Photerparagraph" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Homelocation" class="control-label"></label>
+                <input asp-for="Homelocation" class="form-control" />
+                <span asp-validation-for="Homelocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Copywritestatement" class="control-label"></label>
+                <input asp-for="Copywritestatement" class="form-control" />
+                <span asp-validation-for="Copywritestatement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

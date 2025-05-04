@@ -1,0 +1,212 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model List<AdminDashDataClass>
+
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-flat-color-4">
+            <div class="card-body pb-0">
+
+                <h4 class="mb-0">
+                    <span class="count">@ViewBag.TrainersCount</span>
+                </h4>
+                <p class="text-light">Our Trainers</p>
+
+                <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                    <canvas id="widgetChart1"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--/.col-->
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-flat-color-2">
+            <div class="card-body pb-0">
+                <h4 class="mb-0">
+                    <span class="count">@ViewBag.WorkOutsCount</span>
+                </h4>
+                <p class="text-light">Courses Count</p>
+
+                <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                    <canvas id="widgetChart2"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-flat-color-3">
+            <div class="card-body pb-0">
+
+                <h4 class="mb-0">
+                    <span class="count">@ViewBag.MembersCount</span>
+                </h4>
+                <p class="text-light">Members Count</p>
+
+            </div>
+
+            <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                <canvas id="widgetChart3"></canvas>
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-flat-color-4">
+            <div class="card-body pb-0">
+
+                <h4 class="mb-0">
+                    <span class="count">@ViewBag.ApprovedTestimonialCount</span>
+                </h4>
+                <p class="text-light">Approved Feedbacks Count</p>
+
+                <div class="chart-wrapper px-3" style="height:70px;" height="70">
+                    <canvas id="widgetChart4"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+    <!--/.col-->
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-flat-color-2">
+            <div class="card-body pb-0">
+
+                <h4 class="mb-0">
+                    <span class="count">@ViewBag.UnapprovedTestimonialCount</span>
+                </h4>
+                <p class="text-light">Unapproved Feedbacks Count</p>
+
+                <div class="chart-wrapper px-3" style="height:70px;" height="70">
+                    <canvas id="widgetChart4"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+    <!--/.col-->
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-flat-color-3">
+            <div class="card-body pb-0">
+
+                <h4 class="mb-0">
+                    <span class="count">@ViewBag.MembersNotes</span>
+                </h4>
+                <p class="text-light">Members Notes Count</p>
+
+                <div class="chart-wrapper px-3" style="height:70px;" height="70">
+                    <canvas id="widgetChart4"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+
+
+
+
+
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>World</h4>
+            </div>
+            <div class="Vector-map-js">
+                <div id="vmap" class="vmap" style="height: 265px;"></div>
+            </div>
+        </div>
+        <!-- /# card -->
+    </div>
+
+
+    <div class="card-header pt-3">
+        <strong class="card-title">Most Popular Courses</strong>
+    </div>
+
+
+    <table class="table">
+        <thead class="thead-dark" >
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Shift</th>
+                <th scope="col">duration</th>
+                <th scope="col">Members</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.WorkoutName</td>
+                    <td>@item.Shift</td>
+                    <td>@item.Duration Months</td>
+                    <td>@item.MembersCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+   
+
+    <div class="card-header pt-3" >
+        <strong class="card-title">Recent Joind Members</strong>
+    </div>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">JoinDate</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @for (var i=0;i<=2;i++ )
+            {
+                <tr>
+                    <td>@Model[0].RecentJoin[i].FirstName @Model[0].RecentJoin[i].LastName </td>
+                    <td>@Model[0].RecentJoin[i].JoinDate.Value.ToShortDateString()</td>
+                    <td>@Model[0].RecentJoin[i].Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

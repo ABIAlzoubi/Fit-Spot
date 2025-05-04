@@ -1,0 +1,50 @@
+﻿@model FitnessCenter.Models.MembersTestimonealsClass
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="m-5">
+
+    <h1>Feedback Details</h1>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Text
+            </dt>
+            <dd class="col-sm-10">
+                @Model.TestimonialText
+            </dd>
+            <dt class="col-sm-2">
+                Date
+            </dt>
+            <dd class="col-sm-10">
+                @Model.TestimonialDate
+            </dd>
+            <dt class="col-sm-2">
+                State
+            </dt>
+            <dd class="col-sm-10">
+                @if (Model.Approved!.Value)
+                {
+                    <p>Approved</p>
+                }
+                else
+                {
+                    <p>Not Approved</p>
+                }
+            </dd>
+            <dt class="col-sm-2">
+                Writer Name
+            </dt>
+            <dd class="col-sm-10">
+                @Model.MemberFirstName @Model.MemberLastName
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    </div>
+</div>

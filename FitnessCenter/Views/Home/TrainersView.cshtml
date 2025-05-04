@@ -1,0 +1,67 @@
+﻿@{
+	Layout = "~/Views/Shared/_PrimaryLayout.cshtml";
+}
+
+@model IEnumerable<Staff>
+
+
+@{
+	var path = ViewBag.HeaderImage;
+}
+
+<div class="main-wrapper ">
+	<section class="page-title bg-2" style="background:url('@Url.Content("~/Images/"+path)')  no-repeat;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a asp-controller="Home" asp-action="index" class="text-sm letter-spacing text-white text-uppercase font-weight-bold">Home</a></li>
+						<li class="list-inline-item"><span class="text-white">|</span></li>
+						<li class="list-inline-item text-color text-uppercase text-sm letter-spacing">Trainer</li>
+					</ul>
+					<h1 class="text-lg text-white mt-2">Our Team</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Team Start -->
+	<section class="section bg-gray">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<div class="section-title">
+						<div class="divider mb-3"></div>
+						<h2>Our Trainers</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+			@foreach (var item in Model) {
+
+
+					<div class="col-lg-6">
+						<div class="card border-0 mb-1 bg-transparent  rounded-0 mb-4">
+							<div class="row no-gutters align-items-center">
+								<div class="col-md-6">
+									<img style="object-fit: cover; height:250px" src="~/Images/@item.Image" alt="" class="img-fluid">
+								</div>
+								<div class="col-md-6">
+									<div class="card-body team-wrap pl-4">
+										<h2 class="card-title text-color">@item.FirstName @item.LastName</h2>
+										<h5 class="card-title text-color">@item.Email</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			}
+			</div>
+
+		</div>
+	
+	</section>
+
+</div>
+	<!-- Section Team End -->

@@ -1,0 +1,51 @@
+﻿@model FitnessCenter.Models.Testimonial
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="m-5">
+    <h1 class="mb-3">Sure you want to Approve this feedback?</h1>
+
+    <hr />
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="TestemonialId" />
+                <input type="hidden" asp-for="TestimonialsText" />
+                <input type="hidden" asp-for="TestimonialsDate" />
+                <input type="hidden" asp-for="MemberId" />
+
+
+
+                <div class="form-group">
+
+                    <div class="mb-2">
+                        <p style="display:inline">Feedback Current State:</p>
+                        @if (Model.Approved!.Value)
+                        {
+                            <p style="display:inline"> Approved</p>
+                        }
+                        else
+                        {
+                            <p style="display:inline"> Not Approved</p>
+                        }
+                    </div>
+                   
+
+
+                    <input asp-for="Approved" class="form-control" value="" placeholder="If Sure Write (True) if not write (False)" />
+                    <span asp-validation-for="Approved" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-danger" />
+                    <a asp-action="Index" class="btn btn-primary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

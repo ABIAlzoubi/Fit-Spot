@@ -1,0 +1,60 @@
+﻿@model FitnessCenter.Models.Homepage
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Homepage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ImageFileMainPic"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input asp-for="ImageFileMainPic" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mainstatement" class="control-label"></label>
+                <input asp-for="Mainstatement" class="form-control" />
+                <span asp-validation-for="Mainstatement" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ImageFileJoinUs"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input asp-for="ImageFileJoinUs" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Joinusparagraph" class="control-label"></label>
+                <input asp-for="Joinusparagraph" maxlength="350" class="form-control" />
+                <span asp-validation-for="Joinusparagraph" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ImageFileDiscount"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input asp-for="ImageFileDiscount" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Discountheader" class="control-label"></label>
+                <input asp-for="Discountheader" maxlength="350" class="form-control" />
+                <span asp-validation-for="Discountheader" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="ImageFileFeedback"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input asp-for="ImageFileFeedback" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

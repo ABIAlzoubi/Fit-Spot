@@ -1,0 +1,73 @@
+﻿
+@{
+	Layout = "~/Views/Shared/_PrimaryLayout.cshtml";
+}
+
+@{
+	var path = ViewBag.HeaderImage;
+}
+
+@model IEnumerable<Workout>
+<div class="main-wrapper ">
+	<section class="page-title bg-2" style="background:url('@Url.Content("~/Images/"+path)')  no-repeat;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a asp-controller="Home" asp-action="index" class="text-sm letter-spacing text-white text-uppercase font-weight-bold">Home</a></li>
+						<li class="list-inline-item"><span class="text-white">|</span></li>
+						<li class="list-inline-item text-color text-uppercase text-sm letter-spacing">Pricing Page</li>
+					</ul>
+					<h1 class="text-lg text-white mt-2">Prices and Offers </h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section pricing start -->
+	<section class="section pricing">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<div class="section-title">
+						<div class="divider mb-3"></div>
+						<h2>Package Pricing</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				@foreach (var item in Model) {
+					
+					<div class="col-lg-4 col-md-6 mb-4 mb-lg-3">
+						<div class="card rounded-0 px-4 py-5 ">
+							<h4 class="card-title text-capitalize font-weight-normal font-secondary">@item.WorkoutName</h4>
+							<h3 class="text-lg font-secondary position-relative mt-2"><sup class="text-sm position-absolute">$</sup>@item.Price<sub>per month</sub></h3>
+
+							<div class="card-body mt-2">
+								<ul class="list-unstyled lh-35 mb-4">
+									<li class="text-black font-weight-bold"><i class="ti-check mr-3 text-color "></i>Duration: @item.WorkoutDuration Months</li>
+									<li class="text-black font-weight-bold"><i class="ti-check mr-3 text-color "></i>Shift: @item.Shift</li>
+								</ul>
+
+								@if (!ViewBag.IsEnrolled)
+								{
+									<a asp-controller="Signin_Regester" asp-action="Regester" asp-route-courseId=@item.WorkoutId class="btn btn-main">Buy Now</a>
+								}
+								else
+								{
+									<span class="text-black-50">Your already Enrolled With a Plan</span>
+								}
+
+
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+	</section>
+
+</div>
+	<!-- Section pricing End -->
+	<!-- Section pricing start -->
+	

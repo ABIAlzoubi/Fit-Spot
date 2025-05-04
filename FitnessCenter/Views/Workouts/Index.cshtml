@@ -1,0 +1,68 @@
+﻿@model List<Workout>
+
+<style>
+
+    .table thead th {
+        vertical-align: baseline;
+    }
+
+    .table .thead-dark th {
+        color: #fe9418;
+    }
+</style>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TrainerLayout.cshtml";
+}
+<div class="m-5">
+    <h1 class="mb-3">Maneage Your Workouts</h1>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+
+                <th>
+                    Image
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Duration
+                </th>
+                <th>
+                    Shift
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img style="object-fit: cover; height:70px; width:70px; border-radius:50%; max-width:inherit" src="~/Images/@item.Image">
+                    </td>
+                    <td>
+                        @item.WorkoutName
+                    </td>
+                    <td>
+                        @item.WorkoutDuration
+                    </td>
+                    <td>
+                        @item.Shift
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.WorkoutId" class="btn btn-outline-warning btn-sm">Update</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Create" class="btn btn-outline-warning btn-lg btn-block col-12  align-content-center" >Create New</a>
+    
+</div>

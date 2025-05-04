@@ -1,0 +1,211 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+	Layout = "~/Views/Shared/_PrimaryLayout.cshtml";
+}
+
+@model Tuple<IEnumerable<Workout>, IEnumerable<Testimonial> ,IEnumerable<Homepage>>
+@{
+	var homePage = Model.Item3.SingleOrDefault()!;
+}
+@{
+	if (TempData["ContactUs"] != null)
+	{
+		<div id="customAlert" style="position: fixed; top: 70px; right: 50%; background-color: #28a745; color: white; padding: 15px; border-radius: 5px; z-index: 1000;">
+			@TempData["ContactUs"]
+		</div>
+		<script>
+			setTimeout(function () {
+			var alertElement = document.getElementById('customAlert');
+			if (alertElement) {
+			alertElement.style.display = 'none'; // Hide the alert after 3 seconds
+			}
+			}, 3000);
+		</script>
+	}
+}
+
+
+@* bacground image (SliedrPic) *@
+<section class="slider" style="background:url('@Url.Content("~/Images/"+@homePage.Mainpic)')  no-repeat 0% 30%;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				@* Slider Paragraph *@
+				<h1 class="text-uppercase text-white mb-5">@homePage.Mainstatement</h1>
+
+				@if (@ViewData["MemberId"] == null )
+				{
+					<a asp-controller="Home" asp-action="Pricing" class="btn btn-main ">Join Us <i class="ti-angle-right ml-3"></i></a>
+				}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Section Slider End -->
+<!-- Section Intro Start -->
+
+
+
+@* Slider Why joining Us *@
+<section class="mt-80px">
+	<div class="container">
+		<div class="row ">
+			<div class="col-lg-4 col-md-6">
+				<div class="card p-5 border-0 rounded-top border-bottom position-relative hover-style-1">
+					<span class="number">01</span>
+					@* Header Text *@
+					<h3 class="mt-3 mb-5">Modern Equipment</h3>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="card p-5 border-0 rounded-top hover-style-1">
+					<span class="number">02</span>
+					<h3 class="mt-3 mb-5" >PROFFESIONAL TRAINER</h3>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="card p-5 border-0 rounded-top hover-style-1">
+					<span class="number">03</span>
+					<h3 class="mt-3 mb-5">HEALTHY DIET Plan</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Section Intro End -->
+<!-- Section About start -->
+<section class="section about">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6">
+
+				@* Join us Pic *@
+				<img style="object-fit: cover; height:350px" src="~/Images/@homePage.Joinuspic" alt="" class="img-fluid rounded shadow w-100">
+			</div>
+
+			<div class="col-lg-6">
+				<div class="pl-3 mt-5 mt-lg-0">
+					<h2 class="mt-1 mb-3">Why <span class="text-color">joining Us</span>?</h2>
+					@* Join us Paragraph *@
+					<p class="mb-4">@homePage.Joinusparagraph</p>
+
+					@* about Us page *@
+					<a class="btn btn-main" asp-controller="Home" asp-action="AboutUs" >Learn More<i class="fa fa-angle-right ml-2"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Section About End -->
+<!-- section Call To action start -->
+
+
+@* discount Pic *@
+<section class="section cta" style="background: url('@Url.Content("~/Images/"+@homePage.Discountpic)') fixed 50% 50% no-repeat;">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 col-md-12 col-sm-12">
+				<div class="text-center">
+					@* discount header *@
+					<h2 class="text-lg mt-4 mb-5 text-white">
+						@homePage.Discountheader
+					</h2>
+
+					@* Pricing Page *@
+					<a class="btn btn-main text-white" asp-controller="Home" asp-action="Pricing">Join Today</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- section Call To action start -->
+
+
+
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8 text-center">
+			<div class="section-title">
+				<div class="divider mb-3"></div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Section Gallery END -->
+<!-- Section Testimonial Start -->
+<section class="section textimonial position-relative bg-3">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+				<div class="row justify-content-center">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<div class="divider mb-3"></div>
+							<h2 class="text-white">What People say</h2>
+						</div>
+					</div>
+				</div>
+				
+				<div class="testimonial-slider">
+
+					@foreach (var item in Model.Item2)
+					{
+						<div class="text-center mb-4 ">
+							<i class="ti-quote-left text-lg text-color"></i>
+							<p class="my-4 text-white-50">@item.TestimonialsText</p>
+						</div>
+
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Section Testimonial END -->
+<!-- Section Course Start -->
+<section class="section course bg-gray">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 text-center">
+				<div class="section-title">
+					<div class="divider mb-3"></div>
+					<h2>Popular Courses</h2>
+					<p>We offer group of exercis</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			@{var x = 0;}
+			@foreach (var item in Model.Item1)
+			{
+				<div class="col-lg-3 col-md-6">
+					<div class="card border-0 rounded-0 p-0 mb-5 mb-lg-0 shadow-sm">
+						<img style="object-fit: cover; height:250px" src="~/Images/@item.Image" class="img-fluid">
+
+						<div class="card-body">
+								<a asp-controller="Home" asp-action="SingleCourse" asp-route-CourseId="@item.WorkoutId"><h4 class="font-secondary mb-0">@item.WorkoutName</h4></a>
+						</div>
+					</div>
+				</div>
+				if (x == 3)
+				{
+					break;
+				}
+				x++;
+			}
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+				<div class="mt-5 text-center">
+					@* Our Courses Button *@
+					<a class="btn btn-main" asp-controller="Home" asp-action="Courses">See all our Courses</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Section Course ENd -->

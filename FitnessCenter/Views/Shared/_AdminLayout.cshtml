@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="~/admin/apple-icon.png">
+    <link rel="shortcut icon" href="~/admin/favicon.ico">
+
+    <link rel="stylesheet" href="~/admin/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/admin/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/admin/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/admin/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/admin/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="~/admin/vendors/jqvmap/dist/jqvmap.min.css">
+
+
+    <link rel="stylesheet" href="~/admin/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+
+            @* change the logo  to be Admin Nmae *@
+            <div class="navbar-header">
+                <h3 class="menu-title">Welcome @ViewContext.HttpContext.Session.GetString("AdminName")</h3>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a asp-controller="Staffs" asp-action="index"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    </li>
+
+                    <h3 class="menu-title">Manage Data</h3><!-- /.menu-title -->
+
+
+                    <li>
+                        <a asp-controller="Members" asp-action="index"> <i class="menu-icon fa fa-group"></i>Manage Members </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Staffs" asp-action="ManageTrainers"> <i class="menu-icon fa fa-th"></i>Manage Trainers</a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Testimonials" asp-action="Index"> <i class="menu-icon fa fa-paper-plane"></i>Manage Feedbaks</a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Staffs" asp-action="AboutUsMails"> <i class="menu-icon ti-email"></i>Users Mails</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Staffs" asp-action="Search"> <i class="menu-icon fa fa-search"></i>Search</a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Staffs" asp-action="Report"> <i class="menu-icon fa fa-folder"></i>Reports</a>
+                    </li>
+
+                    <h3 class="menu-title">Manage Pages</h3>
+                    
+                    <li>
+                        <a asp-controller="Homepages" asp-action="Edit" asp-route-Pageid=2> <i class="menu-icon fa fa-home"></i>Home Page</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Sharedlayouts" asp-action="Edit" asp-route-id=7> <i class="menu-icon fa fa-code-fork"></i>Primary Layout</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Aboutuspages" asp-action="Edit" asp-route-id=1> <i class="menu-icon fa fa-info"></i>About Us Page</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Loginpics" asp-action="Edit" asp-route-id=1> <i class="menu-icon fa fa-lock"></i>Sign In Page</a>
+                    </li>
+
+
+
+
+
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+    <!-- Left Panel -->
+
+
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+
+
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            <div class="icon-container" style="display:flex; flex-direction:column;align-items:end">
+                                <span class="ti-user"></span>
+                            </div>
+
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a asp-controller="Staffs" asp-action="UpdateAdmin" class="nav-link"><i class="fa fa-user"></i> My Profile</a>
+
+                            <a asp-controller="Staffs" asp-action="AboutUsMails" class="nav-link"><i class="fa fa-user"></i> Notifications</a>
+
+                            <a asp-controller="Signin_Regester" asp-action="Signout" class="nav-link"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+
+        <div>
+            @RenderBody()
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="~/admin/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/admin/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/admin/assets/js/main.js"></script>
+
+
+    <script src="~/admin/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="~/admin/assets/js/dashboard.js"></script>
+    <script src="~/admin/assets/js/widgets.js"></script>
+    <script src="~/admin/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="~/admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="~/admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+
+</body>
+</html>

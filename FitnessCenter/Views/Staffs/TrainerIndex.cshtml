@@ -1,0 +1,72 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Trainerlayout.cshtml";
+}
+@model IEnumerable<TrainerIndexInfoClass>
+
+
+
+
+<style>
+
+    .table thead th {
+        vertical-align: baseline;
+    }
+
+    .table .thead-dark th {
+        color: #fe9418;
+    }
+</style>
+
+
+
+<div class="card-body">
+    @{
+        var counter = 0;
+    }
+    @foreach (var item in Model)
+    {
+
+        <table class="table">
+            <thead class="thead-dark" style="background-color:#fe9418 !important">
+
+                <tr col-12>
+                    <th col-2>
+                        #@{
+                            counter++;
+                        } @counter
+                    </th>
+                    <th col-3>
+                        <img style="object-fit: cover; height:70px; width:70px; border-radius:50%; max-width:inherit" src="~/Images/@item.WorkoutImage">
+                    </th>
+                    <th col-3>@item.WorkoutName</th>
+                    <th col-2>@item.WorkoutShift</th>
+                    <th col-2>@item.WorkoutDurashion Months</th>
+
+                </tr>
+
+
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var memb in item.MembersInClass)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <img style="object-fit: cover; height:40px; width:40px; border-radius:50%; max-width:inherit" src="~/Images/@memb.Image">
+                        </td>
+                        <td>@memb.FirstName @memb.LastName</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+
+
+</div>
+

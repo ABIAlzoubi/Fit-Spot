@@ -1,0 +1,74 @@
+﻿@{
+	Layout = "~/Views/Shared/_PrimaryLayout.cshtml";
+}
+@model FitnessCenter.Models.Workout
+
+@{
+	var path = ViewBag.HeaderImage;
+}
+
+
+<div class="main-wrapper ">
+	<section class="page-title bg-2" style="background:url('@Url.Content("~/Images/"+path)')  no-repeat;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a asp-controller="Home" asp-action="index" class="text-sm letter-spacing text-white text-uppercase font-weight-bold">Home</a></li>
+						<li class="list-inline-item"><span class="text-white">|</span></li>
+						<li class="list-inline-item text-color text-uppercase text-sm letter-spacing">Course Page</li>
+					</ul>
+					<h1 class="text-lg text-white mt-2">@Model.WorkoutName</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Course Start -->
+	<section class="section course">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-md-12">
+					<div class="single-course">
+						<img style="object-fit: cover; height:500px" src="~/Images/@Model.Image" alt="" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="course-widget border py-4 px-2 mt-5 mt-lg-0">
+						<h3 class="text-center mb-3">Class Features</h3>
+						<ul class="list-group  list-group-flush">
+							<li class="list-group-item d-flex justify-content-between align-items-center text-black">
+								Duration<span class="text-black-50">@Model.WorkoutDuration days</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-items-center text-black">
+								Shift<span class="text-black-50">@Model.Shift</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-items-center text-black">
+								Price<span class="text-black-50">@Model.Price $</span>
+							</li>
+							@foreach (var trainer in ViewBag.TrainerInfo)
+							{
+								<li class="list-group-item d-flex justify-content-between align-items-center text-black">
+									Trainer Name <span class="text-black-50" style="text-align:end">@trainer.FirstName @trainer.LastName</span>
+								</li>
+							}
+						</ul>
+						@if (!ViewBag.IsEnrolled)
+						{
+
+							<div class="text-center mt-3">
+
+								<a asp-controller="Signin_Regester" asp-action="Regester" asp-route-courseId=@Model.WorkoutId class="btn btn-main">Join Now</a>
+
+							</div>
+						}
+						else
+						{
+							<span class="text-black-50">Your already Enrolled With a Plan</span>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model IEnumerable<MemberWorkoutClass>
+
+
+
+<table class="table m-3" id="example1">
+
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Workout</th>
+            <th>Price</th>
+            <th>join Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.WorkoutName</td>
+                <td>@item.WorkoutPrice</td>
+
+                <td>@item.JoinDate.Value.ToShortDateString()</td>
+
+
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+
+<form asp-action="Search" class="m-3">
+    <div style="display:flex; flex-direction:column">
+        <div class="col-4 m-1" style="display:flex;justify-content:space-between; padding:1px">
+            <label for="startDate">Star Date:</label>
+            <input type="date" placeholder="Star Date" name="startDate" />
+        </div>
+
+        <div class="col-4 m-1" style="display:flex;justify-content:space-between; padding:1px">
+            <label for="endDate">End Date:</label>
+            <input type="date" name="endDate" placeholder="End Date" />
+        </div>
+        <button type="submit" class="col-4 btn btn-outline-primary btn-sm">Search</button>
+    </div>
+</form>

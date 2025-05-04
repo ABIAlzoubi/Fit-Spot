@@ -1,0 +1,158 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+
+	var copry = ViewContext.HttpContext.Session.GetString("CopyWrite");
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="GYm,fitness,business,company,agency,multipurpose,modern,bootstrap4">
+
+	<!-- theme meta -->
+	<meta name="theme-name" content="gymfit" />
+
+	<meta name="author" content="Themefisher.com">
+
+	<title>GymFit| Fitness template</title>
+
+	<!-- bootstrap.min css -->
+	<link rel="stylesheet" href="~/HomePage/plugins/bootstrap/css/bootstrap.min.css">
+	<!-- Icofont Css -->
+	<link rel="stylesheet" href="~/HomePage/plugins/icofont/icofont.min.css">
+	<!-- Themify Css -->
+	<link rel="stylesheet" href="~/HomePage/plugins/themify/css/themify-icons.css">
+	<!-- animate.css -->
+	<link rel="stylesheet" href="~/HomePage/plugins/animate-css/animate.css">
+	<!-- Magnify Popup -->
+	<link rel="stylesheet" href="~/HomePage/plugins/magnific-popup/dist/magnific-popup.css">
+	<!-- Owl Carousel CSS -->
+	<link rel="stylesheet" href="~/HomePage/plugins/slick-carousel/slick/slick.css">
+	<link rel="stylesheet" href="~/HomePage/plugins/slick-carousel/slick/slick-theme.css">
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" href="~/HomePage/css/style.css">
+
+</head>
+<body>
+	<!-- Header Start -->
+	<nav class="navbar navbar-expand-lg navigation fixed-top" id="navbar">
+		<div class="container-fluid">
+			<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+				@* logo image instade of h2  *@
+				<img class="text-white text-capitalize" width="130" height="30" style="object-fit:cover" src="~/Images/@ViewContext.HttpContext.Session.GetString("LogoPic")">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsid"
+			aria-controls="navbarsid" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="ti-view-list"></span>
+			</button>
+			<div class="collapse text-center navbar-collapse" id="navbarsid">
+				<ul class="navbar-nav mx-auto">
+					
+					<li class="nav-item active">
+						<a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="TrainersView">Trainers</a></li>
+					<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Courses">Courses</a></li>
+					@if (HttpContextAccessor.HttpContext!.Session.GetString("IsLoggedIn") == "true")
+					{
+						<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="WelcomeMember">Profile</a></li>
+					}
+					<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutUs">About Us</a></li>
+					<li class="nav-item"><a class="nav-link" asp-controller="Contacts" asp-action="Create">Cotanct us</a></li>
+				</ul>
+
+			</div>
+			@if (HttpContextAccessor.HttpContext != null)
+			{
+				@if (HttpContextAccessor.HttpContext.Session.GetString("IsLoggedIn") == "true")
+				{
+					<a asp-controller="Signin_Regester" asp-action="Signout" class="btn btn-main" style="width:100px; padding:10px; height:40px"> <h6>Sign Out</h6></a>
+				}
+				else
+				{
+					<a asp-controller="Signin_Regester" asp-action="Signin" class="btn btn-main" style="width:100px; padding:10px; height:40px"> <h6>Sign in</h6></a>
+				}
+
+			}
+			else
+			{
+				<a asp-controller="Signin_Regester" asp-action="Signin" class="btn btn-main" style="width:100px; padding:10px; height:40px"> <h6>Sign in</h6></a>
+			}
+
+		</div>
+	</nav>
+
+
+	<!-- Header Close -->
+	<div class="main-wrapper ">
+		<div>
+			@RenderBody()
+		</div>
+
+
+
+		<!-- footer Start -->
+		<footer class="footer bg-black-50">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
+						<p>@ViewContext.HttpContext.Session.GetString("PhoterParagraph");</p>
+					</div>
+
+
+					<div class="col-lg-3 col-md-5 mb-5 mb-lg-0">
+						<div class="footer-widget">
+							<h4 class="mb-4 text-white letter-spacing text-uppercase">Quick Links</h4>
+							<ul class="list-unstyled footer-menu lh-40 mb-0">
+								<li><a asp-controller="Home" asp-action="AboutUs"><i class="ti-angle-double-right mr-2"></i>About Us</a></li>
+								<li><a asp-controller=" Contacts" asp-action="Create"><i class="ti-angle-double-right mr-2"></i>Contact Us</a></li>
+								<li><a href="@ViewContext.HttpContext.Session.GetString("FacebookLink")"><i class="ti-angle-double-right mr-2"></i>Facebook</a></li>
+								<li><a href="@ViewContext.HttpContext.Session.GetString("TwitterLink")"><i class="ti-angle-double-right mr-2"></i>Twitter</a></li>
+								<li><a href="@ViewContext.HttpContext.Session.GetString("GitHub")"><i class="ti-angle-double-right mr-2"></i>Github</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-5">
+						<div class="footer-widget">
+							<h4 class="mb-4 text-white letter-spacing text-uppercase">Home location</h4>
+							<p>
+								@ViewContext.HttpContext.Session.GetString("HomeLocation")
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row align-items-center mt-5 px-3 bg-black mx-1 justify-content-center">
+					<p class="text-white mt-3 align-self-center">@ViewContext.HttpContext.Session.GetString("CopyWrite")</p>
+				</div>
+			</div>
+		</footer>
+		<!-- Section Footer End -->
+
+	</div>
+
+
+	<script src="~/HomePage/plugins/jquery/jquery.js"></script>
+	<!-- Bootstrap 4.3.1 -->
+	<script src="~/HomePage/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Slick Slider -->
+	<script src="~/HomePage/plugins/slick-carousel/slick/slick.min.js"></script>
+	<!--  Magnific Popup-->
+	<script src="~/HomePage/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+	<!-- Form Validator -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
+	<script src="~/HomePage/plugins/google-map/gmap.js"></script>
+
+	<script src="~/HomePage/js/script.js"></script>
+</body>
+</html>
+
+
+	
