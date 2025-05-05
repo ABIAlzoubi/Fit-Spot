@@ -39,6 +39,7 @@ View membership plans with various discounts and offers
 Easily choose and register for classes that match their preferences
 
 🛠 Technologies Used
+
 Frontend: HTML, CSS, JavaScript
 
 Backend: ASP.NET MVC (C#)
