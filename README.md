@@ -48,9 +48,7 @@ Dynamic class scheduling and capacity control
 
 Customizable UI for enhanced user experience
 
-Integration of feedback and statistical data for informed decision-making!
-
 
 🔗Linkedin:(https://www.linkedin.com/posts/anas-bassam-90784530b_softwaredevelopment-aspnetmvc-oracle-activity-7287836597348167682--6yS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE73-tcBFtAa86yoC8pYuJs0vEbZUU34h38)
 
-[FitSpot](https://github.com/user-attachments/assets/4bc172da-0cc5-4073-af32-c86c76c24b3b)
+![FitSpot](https://github.com/user-attachments/assets/c6eaeffe-d84e-45f0-bc2b-5a056ced18f9)
